@@ -77,9 +77,3 @@ module.exports = {
   setApiKey,
   verify
 };
-
-
-
-
-
-

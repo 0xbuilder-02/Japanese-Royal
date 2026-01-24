@@ -4,7 +4,7 @@ const config = require("./config");
 const configureMiddleware = require("./middleware");
 const configureRoutes = require("./routes");
 const socketio = require("socket.io");
-const gameSocket = require("./socket/index");
+// const gameSocket = require("./socket/index");
 require("./config/loadEnv")();
 const app = express();
 
@@ -21,13 +21,10 @@ let server;
 const startServer = () => {
   server = app
     .listen(port, () => {
-      console.log(
-        `Server running in ${config.NODE_ENV} mode on port ${port}`
-      );
 
       // Socket.io
       const io = socketio(server);
-      io.on("connect", (socket) => gameSocket.init(socket, io));
+      // io.on("connect", (socket) => gameSocket.init(socket, io));
 
     })
     .on("error", (err) => {

@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node server/server.js | next dev",
     "lint": "next lint",
-    "prepare": "node server/server.js"
+    "prepare": "node server/server.js | next dev"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
